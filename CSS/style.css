@@ -575,16 +575,10 @@ nav,
   text-align: center;
   margin: 29px auto 34px;
 }
-.t-head, .t-data {
+.t-head,
+.t-data {
   color: var(--secondery-color);
 }
-
-
-
-
-
-
-
 
 /* Media query */
 @media screen and (max-width: 1200px) {
@@ -592,17 +586,95 @@ nav,
     width: calc(8.33% * 6);
   }
 }
-@media screen and (max-width: 963px) {
+@media screen and (max-width: 992px) {
   .nav-menu {
     display: none;
   }
-  .menu-btn,
+  .menu-btn {
+    /* display: inline-block; */
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    color: var(--secondery-color);
+    position: relative;
+    z-index: 99999;
+    padding: 5px 20px;
+  }
+  .menu-btn span {
+    display: inline-block;
+    height: 2px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background: var(--secondery-color);
+    transition: 0.5s linear;
+  }
+  .menu-btn::after,
+  .menu-btn::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    left: 0;
+    right: 0;
+    background: var(--secondery-color);
+    transition: 0.5s linear;
+  }
+  .menu-btn::after {
+    top: -5px;
+  }
+  .menu-btn::before {
+    bottom: -5px;
+  }
+  .nav-menu {
+    /* position: absolute; */
+    /* 2nd time */
+    position: fixed;
+    content: "";
+    display: block;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    /* right: -100%; */
+    width: 60%;
+    background: rgba(128, 128, 128, 0.362);
+    backdrop-filter: blur(20px);
+    padding-top: 138.2px;
+    z-index: 998;
+    transition: 0.8s linear;
+  }
+  .nav-menu,
+  .nav-menu ul,
+  .nav-btn {
+    flex-direction: column;
+  }
+  .nav-items {
+    margin: 0 auto 40px;
+  }
+  .nav-btn .search {
+    margin: 20px auto 0;
+  }
+  .menu-btn.show span {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  .menu-btn.show::after {
+    transform: rotate(45deg) translateX(13px);
+  }
+  .menu-btn.show::before {
+    transform: rotate(-45deg) translateX(13px);
+  }
+}
+@media screen and (max-width: 963px) {
+  /* .nav-menu {
+    display: none;
+  } */
+  /* .menu-btn,
   .nav-btn {
     display: inline-block;
     margin-left: auto;
     display: flex;
     align-items: center;
-  }
+  } */
   .title-1 {
     font-size: 52px;
   }
@@ -619,6 +691,9 @@ nav,
   }
 }
 @media screen and (max-width: 768px) {
+  .nav-menu {
+    width: 70%;
+  }
   .club-video {
     padding: 15px;
   }
@@ -638,6 +713,12 @@ nav,
   }
   .title-2 {
     font-size: 24px;
+  }
+  .title-3 {
+    font-size: 19px;
+  }
+  .nav-menu {
+    width: 90%;
   }
   p {
     font-size: 13px;
